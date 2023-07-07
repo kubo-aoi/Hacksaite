@@ -21,7 +21,7 @@ em { font-style: Italic }
 <body>
 <h1>私の掲示板</h1>
 <p>ご自由に書き込んでください</p>
-<form action="./bbs1.cgi" method="post">
+<form action="./toppage.cgi" method="post">
 題名:<input type="text" name="title" size="60"><br>
 名前:<input type="text" name="author" size="20"><br>
 本文<br>
@@ -52,3 +52,9 @@ htmlText = '''
 <body>
 <strong>%s</strong><br>
 <em>%s</em><br>
+<p>%s</p>
+<hr>
+</body>
+</html>
+'''%(title, author, text)
+print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))

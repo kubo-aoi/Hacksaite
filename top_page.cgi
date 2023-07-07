@@ -9,7 +9,7 @@ htmlText = '''
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>掲示板サンプル</title>
+<title>トップページ</title>
 <style type="text/css">
 <!--
 h1 { color:green }
@@ -19,16 +19,12 @@ em { font-style: Italic }
 </style>
 </head>
 <body>
-<h1>私の掲示板</h1>
-<p>ご自由に書き込んでください</p>
-<form action="./toppage.cgi" method="post">
-題名:<input type="text" name="title" size="60"><br>
-名前:<input type="text" name="author" size="20"><br>
-本文<br>
-    <textarea cols="60" rows="5" name="text"></textarea><br>
-    <input type="submit" value="送信">
-    <input type="reset" value="リセット">
-
+<span style = "white-apace:norap;">
+<h1>メルカリのパクリ</h1>
+<form action="./top_page.cgi" method="post">
+<input type="search" name="search" placeholder="キーワードを入力">
+<input type="submit" name="submit" value="検索">
+</span>
 </form>
 
 </body>

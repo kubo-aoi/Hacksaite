@@ -9,7 +9,7 @@
     </h1></a>
     <style>
         body {
-            background:linear-gradient(180deg, #000000 0%, #000000 30%, #fffaf0 30%, #fffaf0 100%);
+            background:linear-gradient(180deg, #000000 0%, #000000 27%, #fffaf0 27%, #fffaf0 100%);
             background-repeat:no-repeat;
             font-family: Arial, sans-serif;
             background-color:#fffaf0;

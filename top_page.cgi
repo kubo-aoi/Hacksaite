@@ -16,7 +16,19 @@ h1 { color:green }
 strong { color: blue; font-size: large }
 em { font-style: Italic }
 -->
+button {
+    width: auto;
+    padding:0;
+    margin:0;
+    background:none;
+    border:0;
+    font-size:0;
+    line-height:0;
+    overflow:visible;
+    cursor:pointer;
+}
 </style>
+
 </head>
 
 <body>
@@ -30,14 +42,14 @@ document.querySelector("form").submit();
 </script>
 
 <form>
+<button type="submit" onclick="multipleaction('./top_page.cgi')" alt="topに戻る"><img src= "./ボタン/ボタン/サイトロゴComBuy.png" width="320"height="100"></button>
 <input type="search" name="search" placeholder="キーワードを入力">
-<button type="submit" onclick="multipleaction('./top_page.cgi')">検索</button> 
-<button type="button" onclick="multipleaction('./login.php')">ログイン</button>
-<button type="button" onclick="multipleaction('./register.php')">新規登録</button>
-<button type="button" onclick="multipleaction('./top_page.cgi')">検索履歴</button>
-<button type="button" onclick="multipleaction('./top_page.cgi')">トップに戻る</button>
-<button type="button" onclick="multipleaction('./top_page.cgi')">出品</button>
-<button type="button" onclick="multipleaction('./top_page.cgi')">カート</button>
+<button type="submit" onclick="multipleaction('./top_page.cgi')"><img src="./ボタン/ボタン/検索ボタン.png" width="50"height="30" alt="検索" /></button> 
+<button type="button" onclick="multipleaction('./login.php')"><img src="./ボタン/ボタン/横長ログイン.png" width="100"height="30" alt="送信" /></button>
+<button type="button" onclick="multipleaction('./register.php')"><img src="./ボタン/ボタン/新規登録.png" width="50"height="50" alt="新規登録" /></button>
+<button type="button" onclick="multipleaction('./top_page.cgi')"><img src="./ボタン/ボタン/購入履歴.png" width="50"height="50" alt="購入履歴" /></button>
+<button type="button" onclick="multipleaction('./top_page.cgi')"><img src="./ボタン/ボタン/出品する.png" width="50"height="50" alt="出品する" /></button>
+<button type="button" onclick="multipleaction('./top_page.cgi')"><img src="./ボタン/ボタン/買い物かご.png" width="50"height="50" alt="カート" /></button>
 </form>
 </body>
 

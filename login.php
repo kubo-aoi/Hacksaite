@@ -1,13 +1,19 @@
+login.php
 <!-- login.php -->
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>ログインページ</title>
+    <a href="top_page.cgi"><h1>
+    <img src= "ボタン/ボタン/サイトロゴComBuy.png" width="320"height="100">
+    </h1></a>
     <style>
         body {
-            background-color: #f2f2f2;
+            background:linear-gradient(180deg, #000000 0%, #000000 24.5%, #fffaf0 24.5%, #fffaf0 100%);
+            background-repeat:no-repeat;
             font-family: Arial, sans-serif;
+            background-color:#fffaf0;
         }
 
         h1 {
@@ -57,6 +63,16 @@
         input[type="submit"]:hover {
             background-color: #0069d9;
         }
+        .adduser {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -72,6 +88,8 @@
                 <input type="password" id="pass" name="pass" required>
             </div>
             <input type="submit" value="認証">
+            <br></br>
+            <a class="adduser" href="register.php">新規登録</a>
         </form>
     </div>
 </body>

@@ -4,10 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>ログイン結果</title>
+    <a href="top_page.cgi"><h1>
+    <img src= "ボタン/ボタン/サイトロゴComBuy.png" width="320"height="100">
+    </h1></a>
     <style>
         body {
-            background-color: #f2f2f2;
+            background:linear-gradient(180deg, #000000 0%, #000000 30%, #fffaf0 30%, #fffaf0 100%);
+            background-repeat:no-repeat;
             font-family: Arial, sans-serif;
+            background-color:#fffaf0;
         }
 
         .container {
@@ -61,7 +66,7 @@
         // 結果の取得
         $result = $sql->fetchAll();
         if (!$result) {
-            echo '<h1>ログイン結果</h1>';
+            echo '<h1>ログイン結果</h1><br>';
             echo '<div class="error-message">ログインに失敗しました．</div>';
             echo '<a class="back-link" href="login.php">戻る</a>';
         } else {
@@ -69,7 +74,14 @@
                 echo '<h1>ログイン結果</h1>';
                 echo '<div class="success-message">ログインに成功しました</div>';
                 echo '<div>' . $loop['userid'] . 'さん、こんにちは</div>';
+
+                // クッキーにユーザ情報を保存
+                setcookie('userid', $loop['userid'], time() + 3600, '/'); // 1時間有効なクッキー
+                setcookie('pass', $loop['pass'], time() + 3600, '/');
+                
+                echo '<a class="back-link" href="top_page.cgi">トップページへ</a>';
                 echo '<a class="back-link" href="login.php">ログアウト</a>';
+                echo '<a class="back-link" href="credit_card.php">クレジットカード登録</a>';
             }
         }
         ?>

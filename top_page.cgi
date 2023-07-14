@@ -87,7 +87,7 @@ document.querySelector("form").submit();
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 
 form = cgi.FieldStorage()
-title = "test"
+
 htmlText = '''
 <!DOCTYPE html>
 <html lang="ja">
@@ -96,10 +96,12 @@ htmlText = '''
 <title>Python Form</title>
 </head>
 <body>
-<hr>
-%s
+<nobr>%s</nobr>
+<nobr>%s</nobr>
+<nobr>%s</nobr>
+<nobr>%s</nobr>
 </body>
 </html>
-    '''%(goods_list)
+    '''%(goods_list[0],goods_list[1],goods_list[2],goods_list[3])
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 

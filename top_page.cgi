@@ -1,8 +1,37 @@
 #!/usr/bin/python3
 import cgi
+import MySQLdb
+import os
+from http import cookies
+import random, string
+
+connection = MySQLdb.connect(
+
+    host='localhost',
+
+    user='user1',
+
+    passwd='passwordA1!',
+
+    db='ShopData',
+
+    charset='utf8'
+
+)
+
+cursor = connection.cursor()
+
+cursor.execute("select * from Goods")
+
+rows = cursor.fetchall()
+goods_list = []
+goods_list2 = []
+for row in rows:
+    good = "<img src='./商品写真and情報/商品写真_情報/"+row[1]+"' width='160'height='90' alt='検索'/>"
+    goods_list.append(good)
+connection.close()
 
 print("Content-Type: text/html\n")
-
 htmlText = '''
 <!DOCTYPE html>
 
@@ -58,9 +87,7 @@ document.querySelector("form").submit();
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 
 form = cgi.FieldStorage()
-title = form.getfirst('title')
-author = form.getfirst('author')
-text = form.getfirst('text')
+
 htmlText = '''
 <!DOCTYPE html>
 <html lang="ja">
@@ -69,11 +96,12 @@ htmlText = '''
 <title>Python Form</title>
 </head>
 <body>
-<strong>%s</strong><br>
-<em>%s</em><br>
-<p>%s</p>
-<hr>
+<nobr>%s</nobr>
+<nobr>%s</nobr>
+<nobr>%s</nobr>
+<nobr>%s</nobr>
 </body>
 </html>
-'''%(title, author, text)
+    '''%(goods_list[0],goods_list[1],goods_list[2],goods_list[3])
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
+

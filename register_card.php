@@ -31,31 +31,58 @@ $existingCard = $sql->fetch(PDO::FETCH_ASSOC);
 // クレジットカード情報の登録または更新
 if ($existingCard) {
     // すでにクレジットカードが登録されている場合は変更する処理を追加
-    $cardId = $existingCard['card_id'];
-    $updateSql = "UPDATE credit_cards SET card_number = :card_number, expiration_date = :expiration_date, security_code = :security_code WHERE card_id = :card_id";
-    $stmt = $pdo->prepare($updateSql);
-    $stmt->bindValue(':card_number', $cardNumber, PDO::PARAM_STR);
-    $stmt->bindValue(':expiration_date', $expirationDate, PDO::PARAM_STR);
-    $stmt->bindValue(':security_code', $securityCode, PDO::PARAM_STR);
-    $stmt->bindValue(':card_id', $cardId, PDO::PARAM_INT);
-    $stmt->execute();
+    echo '<h1>クレジットカード情報変更</h1>';
+    echo '<form action="register_card.php" method="post">';
+    echo '    <label for="card_number">カード番号</label>';
+    echo '    <input type="text" id="card_number" name="card_number" value="' . $existingCard['card_number'] . '" required><br>';
+    echo '    <label for="expiration_date">有効期限</label>';
+    echo '    <input type="text" id="expiration_date" name="expiration_date" value="' . $existingCard['expiration_date'] . '" required><br>';
+    echo '    <label for="security_code">セキュリティコード</label>';
+    echo '    <input type="text" id="security_code" name="security_code" value="' . $existingCard['security_code'] . '" required><br>';
+    echo '    <input type="submit" value="変更">';
+    echo '</form>';
 
-    echo '<h1>クレジットカード情報変更完了</h1>';
-    echo '<div>クレジットカード情報が変更されました。</div>';
-    echo '<a href="purchase.php">戻る</a>';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // クレジットカード情報の変更を処理
+        $updateSql = "UPDATE credit_cards SET card_number = :card_number, expiration_date = :expiration_date, security_code = :security_code WHERE userid = :userid";
+        $stmt = $pdo->prepare($updateSql);
+        $stmt->bindValue(':card_number', $cardNumber, PDO::PARAM_STR);
+        $stmt->bindValue(':expiration_date', $expirationDate, PDO::PARAM_STR);
+        $stmt->bindValue(':security_code', $securityCode, PDO::PARAM_STR);
+        $stmt->bindValue(':userid', $userid, PDO::PARAM_INT);
+        $stmt->execute();
+
+        echo '<h1>クレジットカード情報変更完了</h1>';
+        echo '<div>クレジットカード情報が変更されました。</div>';
+        echo '<a href="purchase.php">戻る</a>';
+    }
 } else {
     // クレジットカードが登録されていない場合は新規登録する処理を追加
-    $insertSql = "INSERT INTO credit_cards (userid, card_number, expiration_date, security_code) VALUES (:userid, :card_number, :expiration_date, :security_code)";
-    $stmt = $pdo->prepare($insertSql);
-    $stmt->bindValue(':userid', $userid, PDO::PARAM_STR);
-    $stmt->bindValue(':card_number', $cardNumber, PDO::PARAM_STR);
-    $stmt->bindValue(':expiration_date', $expirationDate, PDO::PARAM_STR);
-    $stmt->bindValue(':security_code', $securityCode, PDO::PARAM_STR);
-    $stmt->execute();
+    echo '<h1>クレジットカード登録</h1>';
+    echo '<form action="register_card.php" method="post">';
+    echo '    <label for="card_number">カード番号</label>';
+    echo '    <input type="text" id="card_number" name="card_number" required><br>';
+    echo '    <label for="expiration_date">有効期限</label>';
+    echo '    <input type="text" id="expiration_date" name="expiration_date" required><br>';
+    echo '    <label for="security_code">セキュリティコード</label>';
+    echo '    <input type="text" id="security_code" name="security_code" required><br>';
+    echo '    <input type="submit" value="登録">';
+    echo '</form>';
 
-    echo '<h1>クレジットカード登録完了</h1>';
-    echo '<div>クレジットカード情報が登録されました。</div>';
-    echo '<a href="purchase.php">戻る</a>';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // クレジットカード情報の登録を処理
+        $insertSql = "INSERT INTO credit_cards (userid, card_number, expiration_date, security_code) VALUES (:userid, :card_number, :expiration_date, :security_code)";
+        $stmt = $pdo->prepare($insertSql);
+        $stmt->bindValue(':userid', $userid, PDO::PARAM_STR);
+        $stmt->bindValue(':card_number', $cardNumber, PDO::PARAM_STR);
+        $stmt->bindValue(':expiration_date', $expirationDate, PDO::PARAM_STR);
+        $stmt->bindValue(':security_code', $securityCode, PDO::PARAM_STR);
+        $stmt->execute();
+
+        echo '<h1>クレジットカード登録完了</h1>';
+        echo '<div>クレジットカード情報が登録されました。</div>';
+        echo '<a href="purchase.php">戻る</a>';
+    }
 }
 ?>
 

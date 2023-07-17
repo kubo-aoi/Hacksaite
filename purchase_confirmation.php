@@ -54,6 +54,14 @@
 	echo '<a href="top_page.cgi">戻る</a>';
     }
     ?>
+    <h2>購入内容の確認</h2>
+    <!-- 購入内容の表示 -->
+    <!-- その他の表示項目やボタンを追加 -->
+    
+    <form action="purchase_complete.php" method="post">
+        <!-- 購入に関するフォーム項目 -->
+        <!-- 例: 配送先の入力フォーム、購入確定ボタンなど -->
+        <input type="submit" value="購入確定">
 </body>
 </html>
 

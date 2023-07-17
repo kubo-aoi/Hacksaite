@@ -25,9 +25,12 @@ cursor.execute("select * from Goods")
 
 rows = cursor.fetchall()
 goods_list = []
+goods_name = []
 for row in rows:
-    good = "<img src='./Goods_Photo/"+row[1]+"' width='160'height='90' alt='検索'/>"
+    good = "<a href='./login.php'><img src='./Goods_Photo/"+row[1]+"' width='180'height='150' alt='検索'/></a>"
     goods_list.append(good)
+    goods_name.append(row[2])
+len_goodslist=len(goods_list)
 connection.close()
 print("Content-Type: text/html\n")
 htmlText = '''
@@ -68,7 +71,7 @@ document.querySelector("form").submit();
 }
 </script>
 
-<form>
+<form id="mainform">
 <button type="submit" onclick="multipleaction('./top_page.cgi')" alt="topに戻る"><img src= "./button/サイトロゴComBuy.png" width="320"height="100"></button>
 <input type="search" name="search" placeholder="キーワードを入力">
 <button type="submit" onclick="multipleaction('./top_page.cgi')"><img src="./button/検索ボタン.png" width="50"height="30" alt="検索" /></button> 
@@ -94,19 +97,30 @@ htmlText = '''
 <title>Python Form</title>
 </head>
 <body>
-<nobr>%s</nobr>
-<p>イスだよ</p>
-<nobr>%s</nobr>
-<nobr>%s</nobr>
-<nobr>%s</nobr>
-<nobr>%s</nobr>
-<nobr>%s</nobr>
-<nobr>%s</nobr>
-<nobr>%s</nobr>
-<nobr>%s</nobr>
-<nobr>%s</nobr>
+<br>新着top10</br>
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+
 </body>
 </html>
-    '''%(goods_list[0],goods_list[1],goods_list[2],goods_list[3],goods_list[4],goods_list[5],goods_list[6],goods_list[7],goods_list[8],goods_list[9])
+    '''%(goods_list[len_goodslist-1],goods_name[len_goodslist-1],goods_list[len_goodslist-2],goods_name[len_goodslist-2],goods_list[len_goodslist-3],goods_name[len_goodslist-3],goods_list[len_goodslist-4],goods_name[len_goodslist-4],goods_list[len_goodslist-5],goods_name[len_goodslist-5],goods_list[len_goodslist-6],goods_name[len_goodslist-6],goods_list[len_goodslist-7],goods_name[len_goodslist-7],goods_list[len_goodslist-8],goods_name[len_goodslist-8],goods_list[len_goodslist-9],goods_name[len_goodslist-9],goods_list[len_goodslist-10],goods_name[len_goodslist-10])
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 

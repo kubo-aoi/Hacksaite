@@ -51,7 +51,7 @@
         echo '<h1>クレジットカード未登録</h1>';
         echo '<div>クレジットカード情報が登録されていません。</div>';
         echo '<a href="register_card.php">クレジットカード登録</a>';
-        echo '<a href="purchase.php">戻る</a>';
+	echo '<a href="top_page.cgi">戻る</a>';
     }
     ?>
 </body>

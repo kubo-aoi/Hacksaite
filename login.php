@@ -6,7 +6,7 @@ login.php
     <meta charset="UTF-8">
     <title>ログインページ</title>
     <a href="top_page.cgi"><h1>
-    <img src= "button/サイトロゴComBuy.png" width="320"height="100">
+    <img src= "button/ComBuy.png" width="320"height="100">
     </h1></a>
     <style>
         body {

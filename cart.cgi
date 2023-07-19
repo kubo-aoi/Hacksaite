@@ -34,11 +34,11 @@ cursor = connection.cursor()
 cursor.execute("select * from cart")
 
 rows = cursor.fetchall()
-cart_list = []
+cart_list = str()
 for row in rows:
     if row[0]==userid:
         cart = "<br><a href='"+row[2]+"'>"+row[1]+str(row[3])+"円</a></br>"
-        cart_list.append(cart)
+        cart_list+=cart
 connection.close()
 print("Content-Type: text/html\n")
 if userid == "please_login":
@@ -161,6 +161,7 @@ htmlText = '''
 <body>
 <br>カートの中身:%s件</br>
 %s
+<br><a href="./reset.cgi">カートの中身を削除</a></br>
 </body>
 </html>
     '''%(len(cart_list),cart_list)

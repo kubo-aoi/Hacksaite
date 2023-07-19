@@ -164,6 +164,32 @@ else:
 
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 
+connection = MySQLdb.connect(
+
+    host='localhost',
+
+    user='user1',
+
+    passwd='passwordA1!',
+
+    db='ShopData',
+
+    charset='utf8'
+
+)
+
+cursor = connection.cursor()
+
+cursor.execute("select * from credit_cards")
+
+rows = cursor.fetchall()
+credit_num = str()
+for row in rows:
+    if row[1]==userid:
+        credit_num = row[2]
+connection.close()
+
+
 form = cgi.FieldStorage()
 htmlText = '''
 <!DOCTYPE html>
@@ -173,16 +199,18 @@ htmlText = '''
 <title>Python Form</title>
 </head>
 <body>
+<br>カートの中身:%s件</br>
+%s
 <br><strong>合計金額:%s円</strong></br>
 <label for="pet-select">支払い方法を選択:</label>
 <select id="pet-select">
     <option value="">--支払い方法を選択してください--</option>
     <option value="dog">コンビニ支払い</option>
-    <option value="cat">クレジットカード</option>
+    <option value="cat">クレジットカード:%s</option>
 </select>
 <br><a href="./kakutei.cgi">購入確定</a></br>
 </body>
 </html>
-    '''%(sum_money)
+    '''%(cart_num,cart_list,sum_money,credit_num)
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 

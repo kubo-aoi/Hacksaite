@@ -162,6 +162,12 @@ htmlText = '''
 </head>
 <body>
 <img src="./Goods_Photo/cushion.png" width="300"height="230" alt="クッション" />
+<a href='./cushion_cart.cgi'><img src='./button/add.png' width='50'height='50' alt='カートに追加'/></a>
+<nobr><a href='./cushion_cart.cgi'>カートに追加</a></nobr>
+<br>商品名:クッション</br>
+<br>値段:500円</br>
+<br>配送業者:佐川</br>
+<br>お届け日数:6日</br>
 </body>
 </html>
     '''

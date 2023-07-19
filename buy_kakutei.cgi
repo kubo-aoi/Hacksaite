@@ -44,7 +44,7 @@ for row in rows:
         cart_list+=cart
         sum_money += row[3]
         cart_num += 1
-        sql = "insert into `buy` (`User_id`, `goods_name`,`goods_site`,`price`) VALUES('"+userid+"','クッション','./cushion.cgi',500);"
+        sql = "insert into `buy` (`User_id`, `goods_name`,`goods_site`,`price`) VALUES('"+userid+"','"+row[1]+"','"+row[2]+"',"+str(row[3])+");"
         cursor.execute(sql)
         connection.commit()
 connection.close()

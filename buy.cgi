@@ -208,7 +208,7 @@ htmlText = '''
     <option value="dog">コンビニ支払い</option>
     <option value="cat">クレジットカード:%s</option>
 </select>
-<br><a href="./kakutei.cgi">購入確定</a></br>
+<br><a href="./buy_kakutei.cgi">購入確定</a></br>
 </body>
 </html>
     '''%(cart_num,cart_list,sum_money,credit_num)

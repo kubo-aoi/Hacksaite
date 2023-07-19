@@ -37,7 +37,7 @@ rows = cursor.fetchall()
 goods_list = []
 goods_name = []
 for row in rows:
-    good = "<a href='./login.php'><img src='./Goods_Photo/"+row[1]+"' width='180'height='150' alt='検索'/></a>"
+    good = "<a href='"+row[3]+"'><img src='./Goods_Photo/"+row[1]+"' width='180'height='150' alt='検索'/></a>"
     goods_list.append(good)
     goods_name.append(row[2])
 len_goodslist=len(goods_list)
@@ -83,15 +83,15 @@ if userid == "please_login":
     </script>
 
     <form id="mainform">
-    <button type="submit" onclick="multipleaction('./top_page.cgi')" alt="topに戻る"><img src= "./button/サイトロゴComBuy.png" width="320"height="100"></button>
+    <button type="submit" onclick="multipleaction('./top_page.cgi')" alt="topに戻る"><img src= "./button/ComBuy.png" width="320"height="100"></button>
     <h1>%s</h1>
     <input type="search" name="search" placeholder="キーワードを入力">
-    <button type="submit" onclick="multipleaction('./top_page.cgi')"><img src="./button/検索ボタン.png" width="50"height="30" alt="検索" /></button> 
-    <button type="button" onclick="multipleaction('./login.php')"><img src="./button/横長ログイン.png" width="100"height="30" alt="送信" /></button>
-    <button type="button" onclick="multipleaction('./register.php')"><img src="./button/新規登録.png" width="50"height="50" alt="新規登録" /></button>
-    <button type="button" onclick="multipleaction('./top_page.cgi')"><img src="./button/購入履歴.png" width="50"height="50" alt="購入履歴" /></button>
-    <button type="button" onclick="multipleaction('./Exhibit.cgi')"><img src="./button/出品する.png" width="50"height="50" alt="出品する" /></button>
-    <button type="button" onclick="multipleaction('./purchase_confirmation.php')"><img src="./button/買い物かご.png" width="50"height="50" alt="カート" /></button>
+    <button type="submit" onclick="multipleaction('./top_page.cgi')"><img src="./button/search_button.png" width="50"height="30" alt="検索" /></button> 
+    <button type="button" onclick="multipleaction('./login.php')"><img src="./button/login.png" width="100"height="30" alt="送信" /></button>
+    <button type="button" onclick="multipleaction('./register.php')"><img src="./button/sign_up.png" width="50"height="50" alt="新規登録" /></button>
+    <button type="button" onclick="multipleaction('./top_page.cgi')"><img src="./button/rireki.png" width="50"height="50" alt="購入履歴" /></button>
+    <button type="button" onclick="multipleaction('./Exhibit.cgi')"><img src="./button/syuppin.png" width="50"height="50" alt="出品する" /></button>
+    <button type="button" onclick="multipleaction('./purchase_confirmation.php')"><img src="./button/cart.png" width="50"height="50" alt="カート" /></button>
     </form>
     </body>
     
@@ -136,13 +136,13 @@ else:
     </script>
 
     <form id="mainform">
-    <button type="submit" onclick="multipleaction('./top_page.cgi')" alt="topに戻る"><img src= "./button/サイトロゴComBuy.png" width="320"height="100"></button>
+    <button type="submit" onclick="multipleaction('./top_page.cgi')" alt="topに戻る"><img src= "./button/ComBuy.png" width="320"height="100"></button>
     <h1>%s</h1>
     <input type="search" name="search" placeholder="キーワードを入力">
-    <button type="submit" onclick="multipleaction('./top_page.cgi')"><img src="./button/検索ボタン.png" width="50"height="30" alt="検索" /></button> 
-    <button type="button" onclick="multipleaction('./top_page.cgi')"><img src="./button/購入履歴.png" width="50"height="50" alt="購入履歴" /></button>
-    <button type="button" onclick="multipleaction('./Exhibit.cgi')"><img src="./button/出品する.png" width="50"height="50" alt="出品する" /></button>
-    <button type="button" onclick="multipleaction('./purchase_confirmation.php')"><img src="./button/買い物かご.png" width="50"height="50" alt="カート" /></button>
+    <button type="submit" onclick="multipleaction('./top_page.cgi')"><img src="./button/search_button.png" width="50"height="30" alt="検索" /></button> 
+    <button type="button" onclick="multipleaction('./top_page.cgi')"><img src="./button/rireki.png" width="50"height="50" alt="購入履歴" /></button>
+    <button type="button" onclick="multipleaction('./Exhibit.cgi')"><img src="./button/syuppin.png" width="50"height="50" alt="出品する" /></button>
+    <button type="button" onclick="multipleaction('./purchase_confirmation.php')"><img src="./button/cart.png" width="50"height="50" alt="カート" /></button>
     </form>
     </body>
     

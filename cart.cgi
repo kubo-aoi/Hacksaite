@@ -35,10 +35,12 @@ cursor.execute("select * from cart")
 
 rows = cursor.fetchall()
 cart_list = str()
+cart_num = 0
 for row in rows:
     if row[0]==userid:
         cart = "<br><a href='"+row[2]+"'>"+row[1]+str(row[3])+"円</a></br>"
         cart_list+=cart
+        cart_num += 1
 connection.close()
 print("Content-Type: text/html\n")
 if userid == "please_login":
@@ -141,7 +143,6 @@ else:
     <button type="button" onclick="multipleaction('./top_page.cgi')"><img src="./button/rireki.png" width="50"height="50" alt="購入履歴" /></button>
     <button type="button" onclick="multipleaction('./Exhibit.cgi')"><img src="./button/syuppin.png" width="50"height="50" alt="出品する" /></button>
     <button type="button" onclick="multipleaction('./cart.cgi')"><img src="./button/cart.png" width="50"height="50" alt="カート" /></button>
-    <a href="credit_card.php">クレジットカードの登録はこちら</a>
     </form>
     </body>
     
@@ -162,8 +163,9 @@ htmlText = '''
 <br>カートの中身:%s件</br>
 %s
 <br><a href="./reset.cgi">カートの中身を削除</a></br>
+<br><a href="./buy.cgi">購入</a></br>
 </body>
 </html>
-    '''%(len(cart_list),cart_list)
+    '''%(cart_num,cart_list)
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 

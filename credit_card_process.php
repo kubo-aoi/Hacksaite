@@ -10,9 +10,9 @@ if (!isset($_COOKIE['userid'])) {
 }
 
 // フォームからの値をそれぞれ変数に代入
-$cardnumber = $_POST['cardnumber'];
-$expiration = $_POST['expiration'];
-$cvv = $_POST['cvv'];
+$card_number = $_POST['card_number'];
+$expiration_date = $_POST['expiration_date'];
+$security_code = $_POST['security_code'];
 
 // データベースへの接続情報
 $host = 'localhost';
@@ -26,28 +26,27 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // ログインしているユーザのIDを取得
-    $userid = $_SESSION['userid'];
+    $userid = $_COOKIE['userid'];
 
     // クレジットカード情報の登録
-    $sql = "INSERT INTO credit_cards (userid, cardnumber, expiration, cvv) VALUES (:userid, :cardnumber, :expiration, :cvv)";
+    $sql = "INSERT INTO credit_cards (userid, card_number, expiration_date, security_code) VALUES (:userid, :card_number, :expiration_date, :security_code)";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
-    $stmt->bindParam(':cardnumber', $cardnumber, PDO::PARAM_STR);
-    $stmt->bindParam(':expiration', $expiration, PDO::PARAM_STR);
-    $stmt->bindParam(':cvv', $cvv, PDO::PARAM_STR);
+    $stmt->bindParam(':userid', $userid, PDO::PARAM_STR);
+    $stmt->bindParam(':card_number', $card_number, PDO::PARAM_STR);
+    $stmt->bindParam(':expiration_date', $expiration_date, PDO::PARAM_STR);
+    $stmt->bindParam(':security_code', $security_code, PDO::PARAM_INT);
     $stmt->execute();
 
     // 成功メッセージを表示
     echo "クレジットカード情報が正常に登録されました。";
     echo '<a href="address_registration.php">住所登録画面へ</a><br><br>';
-    echo '<a href="login.cgi">戻る</a>';
+    echo '<a href="login.php">戻る</a>';
 
 } catch (PDOException $e) {
     // エラーメッセージを表示
-    echo "クレジットカード情報の登録中にエラーが発生しました。";
+    echo "クレジットカード情報の登録中にエラーが発生しました。<br><br>";
     echo $e->getMessage();
-    echo '<a href="credit_card.php">クレジット登録画面に戻る</a><br><br>';
-    echo '<a href="address_registration.php">住所登録画面へ</a>';
+    echo '<br><br><a href="credit_card.php">クレジット登録画面に戻る</a>';
 }
 ?>
 

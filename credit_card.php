@@ -62,15 +62,15 @@
         <form action="credit_card_process.php" method="post">
             <div class="form-group">
                 <label for="card_number">カード番号</label>
-                <input type="text" id="card_number" name="card_number" required>
+                <input type="text" pattern="\d{16}" id="card_number" name="card_number" required>
             </div>
             <div class="form-group">
                 <label for="expiration_date">有効期限</label>
-                <input type="text" id="expiration_date" name="expiration_date" required>
+                <input type="text" pattern="\d{2}/\d{2}" id="expiration_date" name="expiration_date" required>
             </div>
             <div class="form-group">
                 <label for="security_code">セキュリティコード</label>
-                <input type="text" id="security_code" name="security_code" required>
+                <input type="number" pattern="\d{3}"id="security_code" name="security_code" required>
             </div>
             <input type="submit" value="登録">
         </form>

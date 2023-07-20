@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>クレジットカード登録</title>
+    <h1><img src= "./button/ComBuy.png" width="320"height="100"></h1>
     <style>
         body {
-            background-color: #f2f2f2;
+            background:linear-gradient(180deg, #000000 0%, #000000 24.5%, #fffaf0 24.5%, #fffaf0 100%);
+            background-repeat:no-repeat;
             font-family: Arial, sans-serif;
+            background-color:#fffaf0;
         }
 
         .container {
@@ -32,6 +35,7 @@
         .form-group label {
             display: block;
             margin-bottom: 5px;
+            color: #555;
         }
 
         .form-group input[type="text"],
@@ -62,14 +66,15 @@
 <body>
     <div class="container">
         <h1>住所登録</h1>
-        <form action="touroku_kakutei.php" method="post">
-            <div class="form-group">
-                <label for="todouhuken">都道府県名</label>
-                <input type="text" id="todouhuken" name="todouhuken" required>
-            </div>
+        <form action="address_process.php" method="post">
+            <input type="hidden" name="userid" value="<?php echo $_COOKIE['userid']; ?>">
             <div class="form-group">
                 <label for="yuubinbangou">郵便番号</label>
                 <input type="text" id="yuubinbangou" name="yuubinbangou" required>
+            </div>
+            <div class="form-group">
+                <label for="todouhuken">都道府県名</label>
+                <input type="text" id="todouhuken" name="todouhuken" required>
             </div>
             <div class="form-group">
                 <label for="sikutyouson">市区町村</label>

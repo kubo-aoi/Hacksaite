@@ -35,11 +35,11 @@ try {
         if ($stmt_update->execute()) {
             echo '<h1>更新完了</h1>';
             echo '<div>住所情報が更新されました。</div>';
-            echo '<a href="address_registration.php">戻る</a>';
+            echo '<a href="top_page.cgi">戻る</a>';
         } else {
             echo '<h1>エラー</h1>';
             echo '<div>更新に失敗しました。</div>';
-            echo '<a href="address_registration.php">戻る</a>';
+            echo '<a href="touroku.php">戻る</a>';
         }
     } else {
         // 住所情報が登録されていない場合は新規登録
@@ -53,18 +53,18 @@ try {
         if ($stmt_insert->execute()) {
             echo '<h1>登録完了</h1>';
             echo '<div>住所情報が登録されました。</div>';
-            echo '<a href="address_registration.php">戻る</a>';
+            echo '<a href="top_page.cgi">戻る</a>';
         } else {
             echo '<h1>エラー</h1>';
             echo '<div>登録に失敗しました。</div>';
-            echo '<a href="address_registration.php">戻る</a>';
+            echo '<a href="touroku.php">戻る</a>';
         }
     }
 
 } catch (PDOException $e) {
     echo '<h1>エラー</h1>';
     echo '<div>データベース接続エラー: ' . $e->getMessage() . '</div>';
-    echo '<a href="address_registration.php">戻る</a>';
+    echo '<a href="touroku.php">戻る</a>';
 }
 ?>
 

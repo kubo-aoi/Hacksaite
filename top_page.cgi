@@ -88,7 +88,7 @@ if userid == "please_login":
     <button type="submit" onclick="multipleaction('./top_page.cgi')" alt="topに戻る"><img src= "./button/ComBuy.png" width="320"height="100"></button>
     <h1>%s</h1>
     <input type="search" name="search" placeholder="キーワードを入力">
-    <button type="submit" onclick="multipleaction('./top_page.cgi')"><img src="./button/search_button.png" width="50"height="30" alt="検索" /></button> 
+    <button type="submit" onclick="multipleaction('./kensaku.cgi')"><img src="./button/search_button.png" width="50"height="30" alt="検索" /></button> 
     <button type="button" onclick="multipleaction('./login.php')"><img src="./button/login.png" width="100"height="30" alt="送信" /></button>
     <button type="button" onclick="multipleaction('./register.php')"><img src="./button/sign_up.png" width="50"height="50" alt="新規登録" /></button>
     <button type="button" onclick="multipleaction('./top_page.cgi')"><img src="./button/rireki.png" width="50"height="50" alt="購入履歴" /></button>
@@ -135,13 +135,13 @@ else:
     var a = f.setAttribute("action", u);
     document.querySelector("form").submit();
     }
-    </script
+    </script>
 
     <form id="mainform">
     <button type="submit" onclick="multipleaction('./top_page.cgi')" alt="topに戻る"><img src= "./button/ComBuy.png" width="320"height="100"></button>
     <a href="purchase_confirm.php"><h1>%s</h1></a>
     <input type="search" name="search" placeholder="キーワードを入力">
-    <button type="submit" onclick="multipleaction('./top_page.cgi')"><img src="./button/search_button.png" width="50"height="30" alt="検索" /></button> 
+    <button type="submit" onclick="multipleaction('./kensaku.cgi')"><img src="./button/search_button.png" width="50"height="30" alt="検索" /></button> 
     <button type="button" onclick="multipleaction('./rireki.cgi')"><img src="./button/rireki.png" width="50"height="50" alt="購入履歴" /></button>
     <button type="button" onclick="multipleaction('./Exhibit.cgi')"><img src="./button/syuppin.png" width="50"height="50" alt="出品する" /></button>
     <button type="button" onclick="multipleaction('./cart.cgi')"><img src="./button/cart.png" width="50"height="50" alt="カート" /></button>

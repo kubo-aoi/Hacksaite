@@ -135,7 +135,7 @@ else:
     var a = f.setAttribute("action", u);
     document.querySelector("form").submit();
     }
-    </script>
+    </script
 
     <form id="mainform">
     <button type="submit" onclick="multipleaction('./top_page.cgi')" alt="topに戻る"><img src= "./button/ComBuy.png" width="320"height="100"></button>
@@ -146,6 +146,7 @@ else:
     <button type="button" onclick="multipleaction('./Exhibit.cgi')"><img src="./button/syuppin.png" width="50"height="50" alt="出品する" /></button>
     <button type="button" onclick="multipleaction('./cart.cgi')"><img src="./button/cart.png" width="50"height="50" alt="カート" /></button>
     <a href="credit_card.php">クレジットカードの登録はこちら</a>
+    <a href="touroku.php">住所の登録はこちら</a>
     </form>
     </body>
     

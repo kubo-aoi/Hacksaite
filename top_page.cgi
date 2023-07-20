@@ -52,11 +52,12 @@ if userid == "please_login":
     <meta charset="utf-8">
     <title>ComBuy</title>
     <style type="text/css">
-    <!--
-    h1 { color:green }
-    strong { color: blue; font-size: large }
-    em { font-style: Italic }
-    -->
+    <link rel="stylesheet" type="text/css" href="text.css"/>
+<!--
+h1 { color:green }
+strong { color: blue; font-size: large }
+em { font-style: Italic }
+-->
     button {
         width: auto;
         padding:0;

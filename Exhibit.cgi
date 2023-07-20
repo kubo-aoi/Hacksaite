@@ -134,9 +134,9 @@ if ( os.environ['REQUEST_METHOD'] == "GET"):
 			</select>
 			</p>
 			<select name="mailways" onChange="selchg()">
-				<option>ポスト郵送
-				<option>お手軽郵送
-				<option>通常郵送
+				<option>ポスト郵送</option>
+				<option>お手軽郵送</option>
+				<option>通常郵送</option>
 				</select>
 
 				<TEXTAREA name="t1" rows="1" readonly></TEXTAREA>
@@ -188,7 +188,7 @@ elif ( os.environ['REQUEST_METHOD'] == "POST" ):
 			<a href='./top_page.cgi' alt = "トップページに戻る">
 		</body>
 		
-	"""%(sql)
+	"""
 	
 		
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))

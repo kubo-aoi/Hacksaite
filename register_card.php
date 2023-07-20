@@ -16,10 +16,9 @@ $user = $sql->fetch(PDO::FETCH_ASSOC);
 if (!$user) {
     echo '<h1>クレジットカード登録エラー</h1>';
     echo '<div>ユーザ情報が見つかりません。</div>';
-    echo '<a href="purchase.php">戻る</a>';
+    echo '<a href="top_page.cgi">戻る</a>';
     exit;
 }
-
 $userid = $user['id'];
 
 // クレジットカード情報を検索
@@ -54,7 +53,7 @@ if ($existingCard) {
 
         echo '<h1>クレジットカード情報変更完了</h1>';
         echo '<div>クレジットカード情報が変更されました。</div>';
-        echo '<a href="purchase.php">戻る</a>';
+        echo '<a href="top_page.cgi">戻る</a>';
     }
 } else {
     // クレジットカードが登録されていない場合は新規登録する処理を追加
@@ -81,8 +80,7 @@ if ($existingCard) {
 
         echo '<h1>クレジットカード登録完了</h1>';
         echo '<div>クレジットカード情報が登録されました。</div>';
-        echo '<a href="purchase.php">戻る</a>';
+        echo '<a href="top_page.cgi">戻る</a>';
     }
 }
 ?>
-

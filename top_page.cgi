@@ -54,20 +54,11 @@ if userid == "please_login":
     <meta charset="utf-8">
     <title>ComBuy</title>
     <style type="text/css">
-<<<<<<< HEAD
-    <link rel="stylesheet" type="text/css" href="text.css"/>
-<!--
-h1 { color:green }
-strong { color: blue; font-size: large }
-em { font-style: Italic }
--->
-=======
     <!--
     h1 { color:green }
     strong { color: red; font-size: large }
     em { font-style: Italic }
     -->
->>>>>>> origin
     button {
         width: auto;
         padding:0;

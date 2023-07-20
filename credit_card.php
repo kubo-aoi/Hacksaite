@@ -4,12 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>クレジットカード登録</title>
+    <link rel="stylesheet" type="text/css" href="credit_card.css"/>
+    <h1><img src= "./button/ComBuy.png" width="320" heighr ="100"></h1>
     <style>
-        body {
-            background-color: #f2f2f2;
-            font-family: Arial, sans-serif;
-        }
-
         .container {
             max-width: 400px;
             margin: 0 auto;
@@ -62,7 +59,7 @@
 <body>
     <div class="container">
         <h1>クレジットカード登録</h1>
-        <form action="register_card.php" method="post">
+        <form action="credit_card_process.php" method="post">
             <div class="form-group">
                 <label for="card_number">カード番号</label>
                 <input type="text" id="card_number" name="card_number" required>

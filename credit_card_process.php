@@ -3,7 +3,7 @@
 session_start();
 
 // ログインしているユーザ情報を確認
-if (!isset($_SESSION['userid'])) {
+if (!isset($_COOKIE['userid'])) {
     // ユーザがログインしていない場合はリダイレクトなどの処理を行う
     header("Location: login.php");
     exit;
@@ -39,11 +39,15 @@ try {
 
     // 成功メッセージを表示
     echo "クレジットカード情報が正常に登録されました。";
+    echo '<a href="address_registration.php">住所登録画面へ</a><br><br>';
+    echo '<a href="login.cgi">戻る</a>';
 
 } catch (PDOException $e) {
     // エラーメッセージを表示
     echo "クレジットカード情報の登録中にエラーが発生しました。";
     echo $e->getMessage();
+    echo '<a href="credit_card.php">クレジット登録画面に戻る</a><br><br>';
+    echo '<a href="address_registration.php">住所登録画面へ</a>';
 }
 ?>
 

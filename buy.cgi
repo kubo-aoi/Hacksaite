@@ -36,10 +36,12 @@ cursor.execute("select * from cart")
 rows = cursor.fetchall()
 cart_list = str()
 cart_num = 0
+sum_money = 0
 for row in rows:
     if row[0]==userid:
         cart = "<br><a href='"+row[2]+"'>"+row[1]+str(row[3])+"円</a></br>"
         cart_list+=cart
+        sum_money += row[3]
         cart_num += 1
 connection.close()
 print("Content-Type: text/html\n")
@@ -108,7 +110,7 @@ else:
     <style type="text/css">
     <!--
     h1 { color:green }
-    strong { color: blue; font-size: large }
+    strong { color: red; font-size: large }
     em { font-style: Italic }
     -->
     button {
@@ -122,6 +124,17 @@ else:
         overflow:visible;
         cursor:pointer;
     }
+    label {
+        font-family: sans-serif;
+        font-size: 1rem;
+        padding-right: 10px;
+    }   
+
+    select {
+        font-size: 0.9rem;
+        padding: 2px 5px;
+    }
+
     </style>
     </head>
     
@@ -151,6 +164,32 @@ else:
 
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 
+connection = MySQLdb.connect(
+
+    host='localhost',
+
+    user='user1',
+
+    passwd='passwordA1!',
+
+    db='ShopData',
+
+    charset='utf8'
+
+)
+
+cursor = connection.cursor()
+
+cursor.execute("select * from credit_cards")
+
+rows = cursor.fetchall()
+credit_num = str()
+for row in rows:
+    if row[1]==userid:
+        credit_num = row[2]
+connection.close()
+
+
 form = cgi.FieldStorage()
 htmlText = '''
 <!DOCTYPE html>
@@ -162,10 +201,16 @@ htmlText = '''
 <body>
 <br>カートの中身:%s件</br>
 %s
-<br><a href="./reset.cgi">カートの中身を削除</a></br>
-<br><a href="./buy.cgi">購入</a></br>
+<br><strong>合計金額:%s円</strong></br>
+<label for="pet-select">支払い方法を選択:</label>
+<select id="pet-select">
+    <option value="">--支払い方法を選択してください--</option>
+    <option value="dog">コンビニ支払い</option>
+    <option value="cat">クレジットカード:%s</option>
+</select>
+<br><a href="./buy_kakutei.cgi">購入確定</a></br>
 </body>
 </html>
-    '''%(cart_num,cart_list)
+    '''%(cart_num,cart_list,sum_money,credit_num)
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 

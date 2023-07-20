@@ -28,20 +28,12 @@ connection = MySQLdb.connect(
     charset='utf8'
 
 )
-
 cursor = connection.cursor()
-
-cursor.execute("select * from cart")
-
-rows = cursor.fetchall()
-cart_list = str()
-cart_num = 0
-for row in rows:
-    if row[0]==userid:
-        cart = "<br><a href='"+row[2]+"'>"+row[1]+str(row[3])+"円</a></br>"
-        cart_list+=cart
-        cart_num += 1
+sql = "insert into `cart` (`User_id`, `goods_name`,`goods_site`,`price`) VALUES('"+userid+"','コップ','./cup.cgi',200);"
+cursor.execute(sql)
+connection.commit()
 connection.close()
+
 print("Content-Type: text/html\n")
 if userid == "please_login":
     htmlText = '''
@@ -91,7 +83,7 @@ if userid == "please_login":
     <button type="button" onclick="multipleaction('./register.php')"><img src="./button/sign_up.png" width="50"height="50" alt="新規登録" /></button>
     <button type="button" onclick="multipleaction('./top_page.cgi')"><img src="./button/rireki.png" width="50"height="50" alt="購入履歴" /></button>
     <button type="button" onclick="multipleaction('./Exhibit.cgi')"><img src="./button/syuppin.png" width="50"height="50" alt="出品する" /></button>
-    <button type="button" onclick="multipleaction('./cart.cgi')"><img src="./button/cart.png" width="50"height="50" alt="カート" /></button>
+    <button type="button" onclick="multipleaction('./purchase_confirmation.php')"><img src="./button/cart.png" width="50"height="50" alt="カート" /></button>
     </form>
     </body>
     
@@ -142,7 +134,7 @@ else:
     <button type="submit" onclick="multipleaction('./top_page.cgi')"><img src="./button/search_button.png" width="50"height="30" alt="検索" /></button> 
     <button type="button" onclick="multipleaction('./top_page.cgi')"><img src="./button/rireki.png" width="50"height="50" alt="購入履歴" /></button>
     <button type="button" onclick="multipleaction('./Exhibit.cgi')"><img src="./button/syuppin.png" width="50"height="50" alt="出品する" /></button>
-    <button type="button" onclick="multipleaction('./cart.cgi')"><img src="./button/cart.png" width="50"height="50" alt="カート" /></button>
+    <button type="button" onclick="multipleaction('./purchase_confirmation.php')"><img src="./button/cart.png" width="50"height="50" alt="カート" /></button>
     </form>
     </body>
     
@@ -152,6 +144,7 @@ else:
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 
 form = cgi.FieldStorage()
+
 htmlText = '''
 <!DOCTYPE html>
 <html lang="ja">
@@ -160,12 +153,10 @@ htmlText = '''
 <title>Python Form</title>
 </head>
 <body>
-<br>カートの中身:%s件</br>
-%s
-<br><a href="./reset.cgi">カートの中身を削除</a></br>
-<br><a href="./buy.cgi">購入</a></br>
+<p>カートに追加しました。</p>
+<nobr><a href='./cart.cgi'>カートへ</a></nobr>
 </body>
 </html>
-    '''%(cart_num,cart_list)
+    '''
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 

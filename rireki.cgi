@@ -31,7 +31,7 @@ connection = MySQLdb.connect(
 
 cursor = connection.cursor()
 
-cursor.execute("select * from cart")
+cursor.execute("select * from buy")
 
 rows = cursor.fetchall()
 cart_list = str()
@@ -160,12 +160,10 @@ htmlText = '''
 <title>Python Form</title>
 </head>
 <body>
-<br>カートの中身:%s件</br>
+<br>購入履歴</br>
 %s
-<br><a href="./reset.cgi">カートの中身を削除</a></br>
-<br><a href="./buy.cgi">購入</a></br>
 </body>
 </html>
-    '''%(cart_num,cart_list)
+    '''%(cart_list)
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 

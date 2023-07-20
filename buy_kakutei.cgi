@@ -15,6 +15,7 @@ except KeyError:
 
 	userid = 'please_login'
 
+
 connection = MySQLdb.connect(
 
     host='localhost',
@@ -36,11 +37,51 @@ cursor.execute("select * from cart")
 rows = cursor.fetchall()
 cart_list = str()
 cart_num = 0
+sum_money = 0
 for row in rows:
     if row[0]==userid:
         cart = "<br><a href='"+row[2]+"'>"+row[1]+str(row[3])+"円</a></br>"
         cart_list+=cart
+        sum_money += row[3]
         cart_num += 1
+        sql = "insert into `buy` (`User_id`, `goods_name`,`goods_site`,`price`) VALUES('"+userid+"','"+row[1]+"','"+row[2]+"',"+str(row[3])+");"
+        cursor.execute(sql)
+        connection.commit()
+connection.close()
+
+
+connection = MySQLdb.connect(
+
+    host='localhost',
+
+    user='user1',
+
+    passwd='passwordA1!',
+
+    db='ShopData',
+
+    charset='utf8'
+
+)
+
+cursor = connection.cursor()
+
+cursor.execute("select * from cart")
+
+rows = cursor.fetchall()
+cart_list = str()
+cart_num = 0
+sum_money = 0
+for row in rows:
+    if row[0]==userid:
+        cart = "<br><a href='"+row[2]+"'>"+row[1]+str(row[3])+"円</a></br>"
+        cart_list+=cart
+        sum_money += row[3]
+        cart_num += 1
+
+sql = "delete from cart where User_id ='"+userid+"';"
+cursor.execute(sql)
+connection.commit()
 connection.close()
 print("Content-Type: text/html\n")
 if userid == "please_login":
@@ -108,7 +149,7 @@ else:
     <style type="text/css">
     <!--
     h1 { color:green }
-    strong { color: blue; font-size: large }
+    strong { color: red; font-size: large }
     em { font-style: Italic }
     -->
     button {
@@ -122,6 +163,17 @@ else:
         overflow:visible;
         cursor:pointer;
     }
+    label {
+        font-family: sans-serif;
+        font-size: 1rem;
+        padding-right: 10px;
+    }   
+
+    select {
+        font-size: 0.9rem;
+        padding: 2px 5px;
+    }
+
     </style>
     </head>
     
@@ -151,6 +203,7 @@ else:
 
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 
+
 form = cgi.FieldStorage()
 htmlText = '''
 <!DOCTYPE html>
@@ -160,12 +213,10 @@ htmlText = '''
 <title>Python Form</title>
 </head>
 <body>
-<br>カートの中身:%s件</br>
-%s
-<br><a href="./reset.cgi">カートの中身を削除</a></br>
-<br><a href="./buy.cgi">購入</a></br>
+<strong>購入が確定しました。</strontg>
+<br><a href="./top_page.cgi">トップへ戻る</a></br>
 </body>
 </html>
-    '''%(cart_num,cart_list)
+    '''%()
 print(htmlText.encode("utf-8", 'ignore').decode('utf-8'))
 
